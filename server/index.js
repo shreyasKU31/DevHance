@@ -6,10 +6,10 @@ import connectDB from "./config/db.js";
 
 const app = express();
 const PORT = 3000;
+connectDB();
 
 app.use(clerkMiddleware());
-
-connectDB();
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Backend : Hi");
