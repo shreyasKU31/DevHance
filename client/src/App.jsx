@@ -1,8 +1,12 @@
+import ProfilePage from "./components/layout/ProfilePage";
+import Auth from "./components/ui/auth";
+
 function App() {
   return (
     <>
       <div>
-        <nav className="text-4xl">This is navbar</nav>
+        <Auth />
+        <ProfilePage />
       </div>
     </>
   );
