@@ -1,12 +1,14 @@
-import ProfilePage from "./components/layout/ProfilePage";
-import Auth from "./components/ui/auth";
+import { useUser } from "@clerk/clerk-react";
+import Dashboard from "./pages/Dashboard";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
+  const { isSignedIn } = useUser();
   return (
     <>
       <div>
-        <Auth />
-        <ProfilePage />
+        <nav className="text-4xl">This is navbar</nav>
+        {isSignedIn ? <Dashboard /> : <LandingPage />}
       </div>
     </>
   );
