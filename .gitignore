@@ -10,7 +10,7 @@ yarn-error.log*
 
 # Build artifacts
 build/
-dist/
+# dist/
 public/build/
 client/build/
 server/build/
