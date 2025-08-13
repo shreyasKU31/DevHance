@@ -17,33 +17,8 @@ import { FiArrowRight, FiEye } from "react-icons/fi";
 import "../../../public/designSystem.css";
 
 const HeroSection = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  // Effect to track mouse position for the cursor spotlight
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
   return (
     <section className="relative min-h-screen w-full bg-[#111827] text-[#e5e7eb] font-['Lexend'] overflow-hidden">
-      {/* Interactive Cursor Spotlight */}
-      <div
-        className="cursor-spotlight"
-        style={{
-          left: `${mousePosition.x}px`,
-          top: `${mousePosition.y}px`,
-        }}
-        aria-hidden="true"
-      />
-
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
         <div className="text-center max-w-5xl mx-auto flex flex-col gap-4">
