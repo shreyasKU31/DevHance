@@ -5,7 +5,8 @@
  * Designer: Shreyas K U
  * ===================================================================
  */
-
+/* -- Font Import -- */
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Syne:wght@700;800&display=swap");
 /* =============================================
  * 1. ROOT VARIABLES (DESIGN TOKENS)
  * ============================================= */
@@ -33,9 +34,6 @@
 /* =============================================
  * 2. GLOBAL & TYPOGRAPHY STYLES
  * ============================================= */
-
-/* -- Font Import -- */
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Syne:wght@700;800&display=swap");
 
 /* -- Base Styles -- */
 *,
@@ -128,4 +126,205 @@ h3 {
 
 .hover\\:shadow-aura-glow:hover {
   box-shadow: 0 0 20px 0 rgba(252, 68, 231, 0.5);
+}
+
+.animated-abyss-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.4;
+  will-change: transform; /* Performance optimization */
+}
+
+.blob-1 {
+  width: 24rem; /* 384px */
+  height: 24rem; /* 384px */
+  top: 25%;
+  left: 25%;
+  background-color: #231955; /* --gradient-abyss-1 */
+  animation: drift 60s infinite alternate linear;
+}
+
+.blob-2 {
+  width: 30rem; /* 480px */
+  height: 30rem; /* 480px */
+  bottom: 25%;
+  right: 25%;
+  background-color: #1f4690; /* --gradient-abyss-2 */
+  animation: drift 70s infinite alternate linear;
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(100px, -50px) rotate(30deg);
+  }
+  50% {
+    transform: translate(-80px, 70px) rotate(-20deg);
+  }
+  75% {
+    transform: translate(60px, -120px) rotate(15deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+/* NOTE: The following classes are assumed to be in your global design system CSS:
+  - .text-gradient-aura
+  - .bg-gradient-aura
+  - .border-gradient-aura-animated
+  - .hover-glass-pro
+*/
+/* ===============================================
+
+/**
+ * @file HeroSection.css
+ * @description Component-specific styles for the interactive elements.
+ */
+
+/* Stacking Context Clarification:
+ * - InteractiveLiquid Canvas (in JSX): z-index: 0
+ * - Cursor Spotlight (below): z-index: 5
+ * - Main Text Content (in JSX): z-index: 10
+ * - Creator Stream (in JSX): z-index: 20
+*/
+
+/* Interactive Cursor Spotlight Effect */
+.cursor-spotlight {
+  /* CORRECTION: Changed from 'fixed' to 'absolute' to respect the parent's stacking context. */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(70, 196, 250, 0.1), transparent 60%);
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 5; /* Positioned above the liquid (z-0) but below the text (z-10) */
+  transition: background 0.2s ease;
+}
+
+/* Creator Stream Styles */
+.creator-stream-container {
+  padding-block: 1rem;
+  background: linear-gradient(to top, rgba(17, 24, 39, 0.8), transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.creator-avatar-wrapper {
+  position: relative;
+  margin: 0 1rem;
+}
+
+.creator-avatar-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  /* Glowing ring using the Aura gradient */
+  background: linear-gradient(#111827, #111827) padding-box,
+    linear-gradient(95deg, #fc44e7, #46c4fa) border-box;
+  padding: 3px;
+  transition: transform 0.3s ease;
+}
+
+.creator-avatar-wrapper:hover .creator-avatar-img {
+  transform: scale(1.1);
+}
+
+.creator-name-tooltip {
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: #e5e7eb;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.animated-build {
+  position: relative;
+  display: inline-block; /* Required for the pseudo-element positioning */
+
+  /* Create a large linear gradient that will pan across the text */
+  background: linear-gradient(
+    110deg,
+    #fc44e7,
+    /* Aura 1 */ #46c4fa,
+    /* Aura 2 */ #fc44e7,
+    /* Aura 1 again to make the loop seamless */ #46c4fa /* Aura 2 again */
+  );
+  background-size: 200% 200%; /* Make the background larger than the element */
+
+  /* Clip the background to the text shape */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Make the text color transparent to show the gradient */
+  -webkit-text-fill-color: transparent;
+
+  /* Apply the new panning animation */
+  animation: pan-gradient 4s linear infinite;
+}
+
+/* Add the glowing text shadow effect */
+.animated-build::before {
+  content: "Build.";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+
+  /* Apply a STATIC gradient for the glow. NO animation here. */
+  background: linear-gradient(110deg, #fc44e7, #46c4fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Create the glow with a blur filter */
+  filter: blur(12px);
+  opacity: 0.8;
+}
+
+/* Keyframes for the gradient panning animation */
+@keyframes pan-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
