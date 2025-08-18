@@ -1,16 +1,16 @@
 /*
  * ===================================================================
- * devhance Design System v1.1
+ * devhance Design System v1.1 (CLEANED)
  * Finalized: August 11, 2025
  * Designer: Shreyas K U
  * ===================================================================
  */
 /* -- Font Import -- */
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Syne:wght@700;800&display=swap");
+
 /* =============================================
  * 1. ROOT VARIABLES (DESIGN TOKENS)
  * ============================================= */
-
 :root {
   /* -- Colors -- */
   --color-bg: #111827; /* Monsoon Night */
@@ -34,14 +34,9 @@
 /* =============================================
  * 2. GLOBAL & TYPOGRAPHY STYLES
  * ============================================= */
-
-/* -- Base Styles -- */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
-
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -50,11 +45,7 @@ body {
   line-height: 1.6;
   margin: 0;
 }
-
-/* -- Heading Styles -- */
-h1,
-h2,
-h3 {
+h1, h2, h3 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -64,67 +55,35 @@ h3 {
 /* =============================================
  * 3. GRADIENT UTILITY CLASSES
  * ============================================= */
-
-/* -- "Aura" Gradient for Backgrounds -- */
-.bg-gradient-aura {
-  background-color: var(--gradient-aura-3);
-  background-image: linear-gradient(
-    to bottom right,
-    var(--gradient-aura-1),
-    var(--gradient-aura-2),
-    var(--gradient-aura-3)
-  );
-}
-
-/* -- "Aura" Gradient applied to Text -- */
 .bg-gradient-aura {
   background: linear-gradient(90deg, #fc44e7 0%, #6a59d3 100%);
 }
-
 .bg-aura-accent {
   background-color: #fc44e7;
 }
+
 /* =============================================
  * 4. UI MATERIALS & EFFECTS
  * ============================================= */
-
-/* -- Professional Glass Effect -- */
 .glass-pro {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, calc(var(--glass-bg-opacity) + 0.1)),
-    rgba(255, 255, 255, var(--glass-bg-opacity))
-  );
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
-
 .glass-pro::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0)
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  background: linear-gradient(to bottom right, rgba(255,255,255,0.25), rgba(255,255,255,0));
   pointer-events: none;
 }
-
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-.hover\\:shadow-aura-glow:hover {
+.hover\:shadow-aura-glow:hover {
   box-shadow: 0 0 20px 0 rgba(252, 68, 231, 0.5);
 }
 
@@ -141,78 +100,44 @@ h3 {
   border-radius: 9999px;
   filter: blur(120px);
   opacity: 0.4;
-  will-change: transform; /* Performance optimization */
+  will-change: transform;
 }
-
 .blob-1 {
-  width: 24rem; /* 384px */
-  height: 24rem; /* 384px */
+  width: 24rem;
+  height: 24rem;
   top: 25%;
   left: 25%;
-  background-color: #231955; /* --gradient-abyss-1 */
+  background-color: #231955;
   animation: drift 60s infinite alternate linear;
 }
-
 .blob-2 {
-  width: 30rem; /* 480px */
-  height: 30rem; /* 480px */
+  width: 30rem;
+  height: 30rem;
   bottom: 25%;
   right: 25%;
-  background-color: #1f4690; /* --gradient-abyss-2 */
+  background-color: #1f4690;
   animation: drift 70s infinite alternate linear;
 }
-
 @keyframes drift {
-  0% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
-  25% {
-    transform: translate(100px, -50px) rotate(30deg);
-  }
-  50% {
-    transform: translate(-80px, 70px) rotate(-20deg);
-  }
-  75% {
-    transform: translate(60px, -120px) rotate(15deg);
-  }
-  100% {
-    transform: translate(0px, 0px) rotate(0deg);
-  }
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  25% { transform: translate(100px, -50px) rotate(30deg); }
+  50% { transform: translate(-80px, 70px) rotate(-20deg); }
+  75% { transform: translate(60px, -120px) rotate(15deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
 }
 
-/* NOTE: The following classes are assumed to be in your global design system CSS:
-  - .text-gradient-aura
-  - .bg-gradient-aura
-  - .border-gradient-aura-animated
-  - .hover-glass-pro
-*/
-/* ===============================================
-
-/**
- * @file HeroSection.css
- * @description Component-specific styles for the interactive elements.
- */
-
-/* Stacking Context Clarification:
- * - InteractiveLiquid Canvas (in JSX): z-index: 0
- * - Cursor Spotlight (below): z-index: 5
- * - Main Text Content (in JSX): z-index: 10
- * - Creator Stream (in JSX): z-index: 20
-*/
-
-/* Interactive Cursor Spotlight Effect */
+/* Cursor Spotlight (single definition, fixed for best UX) */
 .cursor-spotlight {
-  /* CORRECTION: Changed from 'fixed' to 'absolute' to respect the parent's stacking context. */
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 600px;
   height: 600px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(70, 196, 250, 0.1), transparent 60%);
+  pointer-events: none;
+  z-index: 9999;
   transform: translate(-50%, -50%);
-  pointer-events: none; /* Allows clicks to pass through */
-  z-index: 5; /* Positioned above the liquid (z-0) but below the text (z-10) */
   transition: background 0.2s ease;
 }
 
@@ -220,43 +145,25 @@ h3 {
 .creator-stream-container {
   padding-block: 1rem;
   background: linear-gradient(to top, rgba(17, 24, 39, 0.8), transparent);
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
-
 .creator-avatar-wrapper {
   position: relative;
   margin: 0 1rem;
 }
-
 .creator-avatar-img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 2px solid transparent;
-  /* Glowing ring using the Aura gradient */
-  background: linear-gradient(#111827, #111827) padding-box,
-    linear-gradient(95deg, #fc44e7, #46c4fa) border-box;
+  background: linear-gradient(#111827, #111827) padding-box, linear-gradient(95deg, #fc44e7, #46c4fa) border-box;
   padding: 3px;
   transition: transform 0.3s ease;
 }
-
 .creator-avatar-wrapper:hover .creator-avatar-img {
   transform: scale(1.1);
 }
-
 .creator-name-tooltip {
   position: absolute;
   bottom: 110%;
@@ -272,117 +179,60 @@ h3 {
   white-space: nowrap;
   pointer-events: none;
 }
+
+/* Animated Gradient Text (Hero) */
 .animated-build {
   position: relative;
-  display: inline-block; /* Required for the pseudo-element positioning */
-
-  /* Create a large linear gradient that will pan across the text */
-  background: linear-gradient(
-    110deg,
-    #fc44e7,
-    /* Aura 1 */ #46c4fa,
-    /* Aura 2 */ #fc44e7,
-    /* Aura 1 again to make the loop seamless */ #46c4fa /* Aura 2 again */
-  );
-  background-size: 200% 200%; /* Make the background larger than the element */
-
-  /* Clip the background to the text shape */
+  display: inline-block;
+  background: linear-gradient(110deg, #fc44e7, #46c4fa, #fc44e7, #46c4fa);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
-
-  /* Make the text color transparent to show the gradient */
   -webkit-text-fill-color: transparent;
-
-  /* Apply the new panning animation */
   animation: pan-gradient 4s linear infinite;
 }
-
-/* Add the glowing text shadow effect */
 .animated-build::before {
   content: "Build.";
   position: absolute;
   left: 0;
   top: 0;
   z-index: -1;
-
-  /* Apply a STATIC gradient for the glow. NO animation here. */
   background: linear-gradient(110deg, #fc44e7, #46c4fa);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* Create the glow with a blur filter */
   filter: blur(12px);
   opacity: 0.8;
 }
-
-/* Keyframes for the gradient panning animation */
 @keyframes pan-gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* ======================================================================== */
-/**
- * @file ContextCollapse.css
- * @description Minimal custom styles for the Context Collapse section.
- */
-
-/* Subtle dotted background texture */
+/* ContextCollapse Section */
 .dotted-background {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.05) 1px,
-    transparent 1px
-  );
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 20px 20px;
   opacity: 0.5;
   z-index: 0;
 }
-
-/* --- Animated Visual Styles --- */
-
 .sphere-node {
   position: absolute;
   border-radius: 50%;
   filter: blur(8px);
 }
-.node-1 {
-  width: 80px;
-  height: 80px;
-  background: #46c4fa;
-}
-.node-2 {
-  width: 100px;
-  height: 100px;
-  background: #fc44e7;
-}
-.node-3 {
-  width: 60px;
-  height: 60px;
-  background: #0d9488;
-}
-
+.node-1 { width: 80px; height: 80px; background: #46c4fa; }
+.node-2 { width: 100px; height: 100px; background: #fc44e7; }
+.node-3 { width: 60px; height: 60px; background: #0d9488; }
 .connecting-lines {
   position: absolute;
   width: 100%;
   height: 100%;
   opacity: 0.5;
 }
-
-/* --- Narrative Text Highlight --- */
-
 .inline-icon {
   display: inline-block;
   vertical-align: middle;
@@ -390,7 +240,6 @@ h3 {
   transform: translateY(-2px);
   color: rgba(229, 231, 235, 0.6);
 }
-
 .highlight-process {
   color: #fff;
   background: linear-gradient(95deg, #fc44e7, #46c4fa);
@@ -399,65 +248,49 @@ h3 {
   -webkit-text-fill-color: transparent;
 }
 
-/* ============================================================================================ */
-.cursor-spotlight {
-  /* Use 'fixed' positioning to keep it relative to the browser window */
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(70, 196, 250, 0.1), transparent 60%);
-
-  /* Ensure it's behind UI but above backgrounds */
-  z-index: 9999;
-
-  /* This is crucial: it prevents the div from blocking mouse events on elements underneath it */
-  pointer-events: none;
-
-  /* This moves the center of the spotlight to the cursor's position */
-  transform: translate(-50%, -50%);
-}
-
-/* ================================================================================================= */
-
-/**
- * @file ContextCollapse.css
- * @description Minimal custom styles for the Context Collapse section.
- * All layout, spacing, and color are handled by Tailwind CSS.
- */
-
-/* Subtle dotted background texture */
-.dotted-background {
+/* FeatureShowcase Section */
+.active-feature-bar {
   position: absolute;
-  top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.05) 1px,
-    transparent 1px
-  );
-  background-size: 20px 20px;
-  opacity: 0.5;
-  z-index: 0;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to bottom, #fc44e7, #46c4fa);
+  box-shadow: 0 0 15px #46c4fa;
 }
 
-/* --- Narrative Text Highlight --- */
-
-.inline-icon {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0.25rem;
-  transform: translateY(-2px);
-  color: rgba(229, 231, 235, 0.6);
+/* Testimonials Section */
+.wall-of-love-container {
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.tweet-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem;
+  margin: 0 1rem;
+  width: 350px;
+  background-color: #1f2937;
+  border-radius: 1rem;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.highlight-process {
-  color: #fff;
-  background: linear-gradient(95deg, #fc44e7, #46c4fa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* WaitlistCTA Section */
+.animate-liquid-light {
+  background: linear-gradient(135deg, #fc44e7, #46c4fa, #0d9488);
+  background-size: 400% 400%;
+  animation: liquid-light-animation 20s ease infinite;
+}
+@keyframes liquid-light-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.focus\:shadow-aura-glow:focus {
+  box-shadow: 0 0 15px rgba(70, 196, 250, 0.4);
+}
+/* Gradient for the button hover state */
+.bg-gradient-aura {
+  background-image: linear-gradient(to right, #fc44e7, #46c4fa);
 }
