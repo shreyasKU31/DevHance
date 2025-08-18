@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "./ui/NavBar";
 import Hero from "./Hero";
-import ContextCollapse from "./ui/ContextCollapse";
+import ContextCollapse from "./ContextCollapse";
+import SolutionShowcase from "./SolutionShowcase";
+import FeatureShowcase from "./FeatureShowcase";
+import Testimonials from "./Testimonials";
+import WaitlistCTA from "./WaitlistCTA";
+import Footer from "./Footer";
 
 const LandingPage = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -18,6 +23,7 @@ const LandingPage = () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+
   return (
     <div>
       {/* Interactive Cursor Spotlight */}
@@ -32,6 +38,11 @@ const LandingPage = () => {
       <Navbar />
       <Hero />
       <ContextCollapse />
+      <SolutionShowcase />
+      <FeatureShowcase />
+      <Testimonials />
+      <WaitlistCTA />
+      <Footer />
     </div>
   );
 };
