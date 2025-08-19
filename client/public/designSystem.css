@@ -112,20 +112,6 @@ h3 {
   animation: pan-gradient 4s linear infinite;
 }
 
-.animated-build::before {
-  content: "Masterpiece.";
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: -1;
-  background: linear-gradient(110deg, #fc44e7, #46c4fa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: blur(12px);
-  opacity: 0.8;
-}
-
 @keyframes pan-gradient {
   0% {
     background-position: 0% 50%;
