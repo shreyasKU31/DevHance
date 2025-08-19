@@ -2,13 +2,98 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image" href="/DHLogo.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Devhance</title>
+    <!-- Meta Description for SEO -->
+    <meta
+      name="description"
+      content="Devhance is the professional platform for creators to go beyond the build. Transform your projects into compelling case studies and showcase the story behind your work."
+    />
+
+    <!-- Font Preconnect and Optimized Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Critical CSS for Hero Section (inline) -->
+    <style>
+      body {
+        background-color: #111827;
+        color: #e5e7eb;
+        font-family: "Lexend", sans-serif;
+        font-weight: 400;
+        line-height: 1.6;
+        margin: 0;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 0;
+      }
+      .animated-build {
+        position: relative;
+        display: inline-block;
+        background: linear-gradient(110deg, #fc44e7, #46c4fa, #fc44e7, #46c4fa);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: pan-gradient 4s linear infinite;
+      }
+      @keyframes pan-gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .cursor-spotlight {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(70, 196, 250, 0.1),
+          transparent 60%
+        );
+        z-index: 9999;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+      }
+    </style>
     <link rel="stylesheet" href="/index.css" />
-    <script type="module" crossorigin src="/assets/index-DqsA7pVl.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DvtRcpGV.css">
+    <link
+      rel="preload"
+      href="/designSystem.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript><link rel="stylesheet" href="/designSystem.css" /></noscript>
+    <script type="module" crossorigin src="/assets/index-B1hByUSF.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DVANFy3r.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>

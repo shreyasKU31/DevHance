@@ -1,10 +1,12 @@
 /*
  * ===================================================================
- * devhance Design System v1.1
- * Finalized: August 11, 2025
+ * devhance Complete Design System & Component Styles v1.1
+ * Finalized: August 18, 2025
  * Designer: Shreyas K U
  * ===================================================================
  */
+/* -- Font Import -- */
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Syne:wght@700;800&display=swap");
 
 /* =============================================
  * 1. ROOT VARIABLES (DESIGN TOKENS)
@@ -17,9 +19,6 @@
   --gradient-aura-1: #fc44e7;
   --gradient-aura-2: #46c4fa;
   --gradient-aura-3: #0d9488;
-  --gradient-abyss-1: #231955;
-  --gradient-abyss-2: #1f4690;
-  --gradient-abyss-3: #161616;
 
   /* -- Typography -- */
   --font-heading: "Syne", sans-serif;
@@ -33,9 +32,6 @@
 /* =============================================
  * 2. GLOBAL & TYPOGRAPHY STYLES
  * ============================================= */
-
-/* -- Font Import -- */
-@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500&family=Syne:wght@700;800&display=swap");
 
 /* -- Base Styles -- */
 *,
@@ -53,7 +49,6 @@ body {
   margin: 0;
 }
 
-/* -- Heading Styles -- */
 h1,
 h2,
 h3 {
@@ -64,78 +59,300 @@ h3 {
 }
 
 /* =============================================
- * 3. GRADIENT UTILITY CLASSES
- * ============================================= */
-
-/* -- "Aura" Gradient for Backgrounds -- */
-.bg-gradient-aura {
-  background-color: var(--gradient-aura-3);
-  background-image: linear-gradient(
-    to bottom right,
-    var(--gradient-aura-1),
-    var(--gradient-aura-2),
-    var(--gradient-aura-3)
-  );
-}
-
-/* -- "Aura" Gradient applied to Text -- */
-.text-gradient-aura {
-  background: linear-gradient(
-    to right,
-    var(--gradient-aura-1),
-    var(--gradient-aura-2),
-    var(--gradient-aura-3)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* -- "Abyss" Background Gradient -- */
-.bg-gradient-abyss {
-  background-color: var(--gradient-abyss-3);
-  background-image: linear-gradient(
-    160deg,
-    var(--gradient-abyss-1),
-    var(--gradient-abyss-2),
-    var(--gradient-abyss-3)
-  );
-}
-
-/* =============================================
- * 4. UI MATERIALS & EFFECTS
+ * 3. GLOBAL UTILITY CLASSES
  * ============================================= */
 
 /* -- Professional Glass Effect -- */
 .glass-pro {
-  position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, calc(var(--glass-bg-opacity) + 0.1)),
-    rgba(255, 255, 255, var(--glass-bg-opacity))
-  );
+  background: rgba(255, 255, 255, var(--glass-bg-opacity));
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.glass-pro::before {
-  content: "";
+/* -- Gradient Text Highlight -- */
+.highlight-process {
+  color: #fff;
+  background: linear-gradient(
+    95deg,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =============================================
+ * 4. COMPONENT-SPECIFIC STYLES
+ * ============================================= */
+
+/* --- Hero Section --- */
+.cursor-spotlight {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(70, 196, 250, 0.1), transparent 60%);
+  z-index: 9999;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.animated-build {
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(110deg, #fc44e7, #46c4fa, #fc44e7, #46c4fa);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: pan-gradient 4s linear infinite;
+}
+
+@keyframes pan-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --- Context Collapse Section --- */
+.dotted-background {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.25),
-    rgba(255, 255, 255, 0)
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
   );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  background-size: 20px 20px;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.inline-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0.25rem;
+  transform: translateY(-2px);
+  color: rgba(229, 231, 235, 0.6);
+}
+
+/* --- Feature Showcase Section --- */
+.active-feature-bar {
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2)
+  );
+  box-shadow: 0 0 15px var(--gradient-aura-2);
+}
+
+/* --- Testimonials Section --- */
+.wall-of-love-container {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.tweet-card {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.5rem;
+  margin: 0 1rem;
+  width: 350px;
+  background-color: #1f2937;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Waitlist CTA Section --- */
+.animate-liquid-light {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2),
+    var(--gradient-aura-3)
+  );
+  background-size: 400% 400%;
+  animation: liquid-light-animation 20s ease infinite;
+}
+
+@keyframes liquid-light-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.focus\:shadow-aura-glow:focus {
+  box-shadow: 0 0 15px rgba(70, 196, 250, 0.4);
+}
+
+/* --- Footer Section --- */
+.gradient-separator {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+.footer-link {
+  position: relative;
+  color: rgba(229, 231, 235, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
+}
+
+.social-icon {
+  font-size: 24px;
+  color: rgba(229, 231, 235, 0.7);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--gradient-aura-2);
+  transform: translateY(-2px);
+}
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/**
+ * @file Navbar.css
+ * @description Minimal custom styles for the Navbar component.
+ */
+
+/* --- Main Navbar Container --- */
+.navbar-glass {
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Logo / Brand --- */
+.brand-text {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+/* --- Desktop Link Underline --- */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: rgba(229, 231, 235, 0.7);
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #ffffff;
+}
+.nav-link-underline {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover .nav-link-underline {
+  transform: scaleX(1);
+}
+
+/* --- Sign Up Button --- */
+.signup-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: linear-gradient(95deg, #fc44e7, #46c4fa);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.signup-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(252, 68, 231, 0.3);
+}
+
+/* --- Mobile Menu --- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #111827; /* --color-bg */
+  z-index: 40;
+  transition: opacity 0.4s ease;
+}
+
+.aura-bg {
+  background: linear-gradient(
+    95deg,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2)
+  );
 }
