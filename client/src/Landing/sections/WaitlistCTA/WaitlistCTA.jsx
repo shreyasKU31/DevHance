@@ -7,6 +7,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiCheckCircle } from "react-icons/fi";
+import clickPopup from "../../common/WaitlistForm/Form";
 
 // --- Main Component ---
 const WaitlistCTA = () => {
@@ -64,18 +65,11 @@ const WaitlistCTA = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="your.email@example.com"
-                  required
-                  className="h-14 w-full rounded-xl border border-white/20 bg-white/10 px-6 text-white placeholder-white/50 transition-all duration-300 focus:border-[#46C4FA] focus:shadow-aura-glow focus:outline-none sm:w-80"
-                />
                 <motion.button
                   type="submit"
                   className="group relative h-14 w-full rounded-xl bg-[#111827] px-8 font-medium text-white transition-transform duration-200 hover:-translate-y-1 sm:w-auto"
                   whileHover="hover"
+                  onClick={clickPopup}
                 >
                   <motion.div className="absolute inset-0 rounded-xl bg-gradient-aura opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
                   <span className="relative">Be the First in Line</span>

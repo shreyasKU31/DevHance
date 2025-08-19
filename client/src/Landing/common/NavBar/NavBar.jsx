@@ -6,6 +6,7 @@
  */
 import React, { useState, useEffect } from "react";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import clickPopup from "../WaitlistForm/Form";
 
 // --- Main Component ---
 const Navbar = () => {
@@ -76,7 +77,7 @@ const Navbar = () => {
             <a href="#" className="signup-button">
               Sign Up
             </a> */}
-            <a href="#" className="signup-button">
+            <a href="#" className="signup-button" onClick={clickPopup}>
               Get Early Access
             </a>
           </div>

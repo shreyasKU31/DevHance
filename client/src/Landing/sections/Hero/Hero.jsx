@@ -11,7 +11,8 @@
 
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { FiArrowRight, FiEye } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
+import clickPopup from "../../common/WaitlistForm/Form";
 
 const HeroSection = () => {
   return (
@@ -56,6 +57,7 @@ const HeroSection = () => {
                   "0 10px 20px rgba(0,0,0,0.2), 0 0 25px -5px rgba(252, 68, 231, 0.5)",
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              onClick={clickPopup}
               className="group aura-bg inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full bg-gradient-aura w-full sm:w-auto"
             >
               Request Early Access
