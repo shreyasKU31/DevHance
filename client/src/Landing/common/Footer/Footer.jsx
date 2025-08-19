@@ -23,7 +23,7 @@ const Footer = () => {
               aria-label="devhance homepage"
               className="flex gap-2 items-center"
             >
-              <img className="w-12" src="/DHLogo.webp" alt="" />
+              <img className="w-12" src="/DHLogo.webp" alt="Devhance Logo" width="48" height="48" />
               <span className="font-syne text-xl font-bold text-white">
                 DevHance
               </span>
@@ -72,13 +72,13 @@ const Footer = () => {
               Connect
             </h3>
             <div className="flex justify-center gap-6 lg:justify-start">
-              <a href="#" className="social-icon">
+              <a href="#" className="social-icon" aria-label="Visit the devhance GitHub profile">
                 <FaGithub />
               </a>
-              <a href="#" className="social-icon">
+              <a href="#" className="social-icon" aria-label="Visit the devhance Twitter profile">
                 <FaTwitter />
               </a>
-              <a href="#" className="social-icon">
+              <a href="#" className="social-icon" aria-label="Visit the devhance LinkedIn profile">
                 <FaLinkedin />
               </a>
             </div>

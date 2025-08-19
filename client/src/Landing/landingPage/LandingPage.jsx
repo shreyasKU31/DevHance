@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
+
 import Navbar from "../common/NavBar/NavBar";
 import Hero from "../sections/Hero/Hero";
 import ContextCollapse from "../sections/ContextCollapse/ContextCollapse";
 import SolutionShowcase from "../sections/SolutionShowcase/SolutionShowcase";
-import FeatureShowcase from "../sections/FeatureShowcase/FeatureShowcase";
-import Testimonials from "../sections/Testimonials/Testimonials";
-import WaitlistCTA from "../sections/WaitlistCTA/WaitlistCTA";
-import Footer from "../common/Footer/Footer";
+
+const FeatureShowcase = lazy(() =>
+  import("../sections/FeatureShowcase/FeatureShowcase")
+);
+const WaitlistCTA = lazy(() => import("../sections/WaitlistCTA/WaitlistCTA"));
+const Testimonials = lazy(() =>
+  import("../sections/Testimonials/Testimonials")
+);
+const Footer = lazy(() => import("../common/Footer/Footer"));
 
 const LandingPage = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -39,10 +45,12 @@ const LandingPage = () => {
       <Hero />
       <ContextCollapse />
       <SolutionShowcase />
-      <FeatureShowcase />
-      {/* <Testimonials /> */}
-      <WaitlistCTA />
-      <Footer />
+      <Suspense fallback={null}>
+        <FeatureShowcase />
+        <Testimonials />
+        <WaitlistCTA />
+        <Footer />
+      </Suspense>
     </div>
   );
 };
