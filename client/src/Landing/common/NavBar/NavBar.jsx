@@ -29,9 +29,9 @@ const Navbar = () => {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { href: "#", label: "Explore" },
-    { href: "#", label: "About" },
-    { href: "#", label: "Showcase" },
+    { href: "#", label: "Problem" },
+    { href: "#", label: "Features" },
+    { href: "#", label: "Testimonials" },
   ];
 
   return (
