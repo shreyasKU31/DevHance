@@ -5,7 +5,11 @@
  * @requires react-icons/fa
  */
 import React from "react";
-import { FaGithub, FaTwitter, FaLinkedin } from "react-icons/fa";
+import {
+  GitHubLogoIcon,
+  TwitterLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
 
 // --- Main Component ---
 const Footer = () => {
@@ -23,7 +27,13 @@ const Footer = () => {
               aria-label="devhance homepage"
               className="flex gap-2 items-center"
             >
-              <img className="w-12" src="/DHLogo.webp" alt="Devhance Logo" width="48" height="48" />
+              <img
+                className="w-12"
+                src="/DHLogo.webp"
+                alt="Devhance Logo"
+                width="48"
+                height="48"
+              />
               <span className="font-syne text-xl font-bold text-white">
                 DevHance
               </span>
@@ -72,14 +82,26 @@ const Footer = () => {
               Connect
             </h3>
             <div className="flex justify-center gap-6 lg:justify-start">
-              <a href="#" className="social-icon" aria-label="Visit the devhance GitHub profile">
-                <FaGithub />
+              <a
+                href="#"
+                className="social-icon"
+                aria-label="Visit the devhance GitHub profile"
+              >
+                <GitHubLogoIcon width={24} height={24} />
               </a>
-              <a href="#" className="social-icon" aria-label="Visit the devhance Twitter profile">
-                <FaTwitter />
+              <a
+                href="#"
+                className="social-icon"
+                aria-label="Visit the devhance Twitter profile"
+              >
+                <TwitterLogoIcon width={24} height={24} />
               </a>
-              <a href="#" className="social-icon" aria-label="Visit the devhance LinkedIn profile">
-                <FaLinkedin />
+              <a
+                href="#"
+                className="social-icon"
+                aria-label="Visit the devhance LinkedIn profile"
+              >
+                <LinkedInLogoIcon width={24} height={24} />
               </a>
             </div>
           </div>
