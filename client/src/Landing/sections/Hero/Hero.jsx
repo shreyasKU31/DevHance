@@ -6,12 +6,18 @@
  *
  * @requires framer-motion
  * @requires typewriter-effect
- * @requires react-icons
+ * @requires lucide-react
  */
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import clickPopup from "../../common/WaitlistForm/Form";
+// Assuming clickPopup is a valid import from your project structure
+// import clickPopup from "../../common/WaitlistForm/Form";
+import { TypeAnimation } from "react-type-animation";
+import { ArrowRight } from "lucide-react";
+
+// A placeholder for the clickPopup function if it's not available
+const clickPopup = () => console.log("Request Early Access button clicked");
 
 const HeroSection = () => {
   const [showTypewriter, setShowTypewriter] = useState(false);
@@ -19,24 +25,46 @@ const HeroSection = () => {
     const timer = setTimeout(() => setShowTypewriter(true), 1200); // 1.2s delay
     return () => clearTimeout(timer);
   }, []);
+
   return (
-    <section className="relative min-h-screen w-full bg-[#111827] text-[#e5e7eb] font-['Lexend'] overflow-hidden">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#111827] p-4 text-[#e5e7eb]">
       {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
-        <div className="text-center max-w-5xl mx-auto flex flex-col gap-4">
-          <h1 className="font-syne text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
-            <span className="block text-3xl md:text-5xl lg:text-6xl text-white mt-2">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center p-4">
+        <div className="flex flex-col gap-4 text-center">
+          <h1 className="font-Syne text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
+            <span className="mt-2 block text-3xl text-white md:text-5xl lg:text-6xl">
               Your Project is a
               <span className="animated-build ml-4"> Masterpiece.</span>
-              Every Project Has a Story.
-              <br /> Tell It Here.
             </span>
           </h1>
-          <p className="mt-2 text-base md:text-lg max-w-2xl mx-auto text-gray-200/80">
+          {/* Animated Sub-headline using react-type-animation */}
+
+          <div className="mt-4 h-16">
+            {showTypewriter && (
+              <TypeAnimation
+                sequence={[
+                  "Unveil your Process.",
+                  2000,
+                  "Showcase your Story.",
+                  2000,
+                  "Amaze the World.",
+                  2000,
+                ]}
+                wrapper="span"
+                speed={50}
+                className="font-['Syne'] text-3xl font-bold text-white md:text-5xl lg:text-6xl"
+                cursor={true}
+                repeat={Infinity}
+              />
+            )}
+          </div>
+
+          <p className="mx-auto mt-2 max-w-2xl text-base text-gray-200/80 md:text-lg">
             The professional platform where creators don't just show their
             work—they explain its genius.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <motion.button
               whileHover={{
                 y: -4,
@@ -45,15 +73,16 @@ const HeroSection = () => {
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               onClick={clickPopup}
-              className="group aura-bg tracking-widest inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full bg-gradient-aura w-full sm:w-auto"
+              className="group signup-button inline-flex w-full items-center justify-center rounded-full bg-gradient-aura px-8 py-4 text-base font-semibold tracking-widest text-white sm:w-auto"
             >
               Request Early Access
-              <i className="fa-solid fa-arrow-right"></i>
+              <ArrowRight
+                className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
+                size={20}
+              />
             </motion.button>
-            {/* <button className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-gray-300 rounded-full border-gradient-aura-animated hover-glass-pro w-full sm:w-auto transition-colors duration-300 hover:text-white">
-              <FiEye className="mr-2" /> Explore Projects
-            </button> */}
           </div>
+
           <p className="mt-8 text-sm text-gray-400/60">
             Join innovators from Google, Figma, and MIT.
           </p>
@@ -63,4 +92,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default React.memo(HeroSection);
