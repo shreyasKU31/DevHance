@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import LandingPage from "./Landing/landingPage/LandingPage";
-import Loader from "./components/common/Loader/Loader";
+import Loader from "./components/Loader";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
