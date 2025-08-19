@@ -9,12 +9,18 @@
  * @requires react-icons
  */
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Typewriter from "typewriter-effect";
 import { FiArrowRight } from "react-icons/fi";
+import Typewriter from "typewriter-effect";
 import clickPopup from "../../common/WaitlistForm/Form";
 
 const HeroSection = () => {
+  const [showTypewriter, setShowTypewriter] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setShowTypewriter(true), 1200); // 1.2s delay
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <section className="relative min-h-screen w-full bg-[#111827] text-[#e5e7eb] font-['Lexend'] overflow-hidden">
       {/* Main Content */}
@@ -26,23 +32,29 @@ const HeroSection = () => {
               <span className="animated-build ml-4"> Masterpiece.</span>
             </span>
             <div className="mt-2">
-              <Typewriter
-                options={{
-                  strings: [
-                    "Unveil your Process.",
-                    "Showcase your Story.",
-                    "Amaze the World.",
-                  ],
-                  autoStart: true,
-                  loop: true,
-                  delay: 75,
-                  deleteSpeed: 50,
-                  wrapperClassName:
-                    "text-4xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight",
-                  cursorClassName:
-                    "text-4xl md:text-6xl lg:text-7xl text-[#fc44e7]",
-                }}
-              />
+              {!showTypewriter ? (
+                <span className="text-4xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight">
+                  Unveil your Process. Showcase your Story. Amaze the World.
+                </span>
+              ) : (
+                <Typewriter
+                  options={{
+                    strings: [
+                      "Unveil your Process.",
+                      "Showcase your Story.",
+                      "Amaze the World.",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    delay: 75,
+                    deleteSpeed: 50,
+                    wrapperClassName:
+                      "text-4xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight",
+                    cursorClassName:
+                      "text-4xl md:text-6xl lg:text-7xl text-[#fc44e7]",
+                  }}
+                />
+              )}
             </div>
           </h1>
           <p className="mt-2 text-base md:text-lg max-w-2xl mx-auto text-gray-200/80">
