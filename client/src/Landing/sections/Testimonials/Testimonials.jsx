@@ -10,7 +10,10 @@ import { heroTestimonials } from "./data.js";
 // --- Main Component ---
 const Testimonials = () => {
   return (
-    <section className="w-full overflow-hidden bg-[#111827] py-32 px-8">
+    <section
+      id="testimonials"
+      className="w-full overflow-hidden bg-[#111827] py-32 px-8"
+    >
       <div className="mx-auto max-w-7xl text-center">
         <h2 className="font-['Syne'] text-4xl font-bold text-white">
           Built for Creators. Loved by Innovators.

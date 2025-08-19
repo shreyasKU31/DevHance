@@ -47,7 +47,7 @@ const LandingPage = () => {
       <SolutionShowcase />
       <Suspense fallback={null}>
         <FeatureShowcase />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <WaitlistCTA />
         <Footer />
       </Suspense>

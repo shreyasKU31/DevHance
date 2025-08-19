@@ -24,17 +24,13 @@ const HeroSection = () => {
       {/* Main Content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-4">
         <div className="text-center max-w-5xl mx-auto flex flex-col gap-4">
-          <h1 className="font-['Syne'] text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
+          <h1 className="font-syne text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
             <span className="block text-3xl md:text-5xl lg:text-6xl text-white mt-2">
               Your Project is a
               <span className="animated-build ml-4"> Masterpiece.</span>
+              Every Project Has a Story.
+              <br /> Tell It Here.
             </span>
-            <div className="mt-2">
-              <span className="text-4xl md:text-5xl lg:text-6xl text-white">
-                Every Project Has a Story.
-                <br /> Tell It Here.
-              </span>
-            </div>
           </h1>
           <p className="mt-2 text-base md:text-lg max-w-2xl mx-auto text-gray-200/80">
             The professional platform where creators don't just show their
@@ -49,7 +45,7 @@ const HeroSection = () => {
               }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
               onClick={clickPopup}
-              className="group aura-bg inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full bg-gradient-aura w-full sm:w-auto"
+              className="group aura-bg tracking-widest inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full bg-gradient-aura w-full sm:w-auto"
             >
               Request Early Access
               <i className="fa-solid fa-arrow-right"></i>

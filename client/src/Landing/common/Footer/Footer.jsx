@@ -19,7 +19,7 @@ const Footer = () => {
         {/* Top Separator */}
         <div className="h-px w-full gradient-separator"></div>
 
-        <div className="grid grid-cols-1 gap-12 py-20 lg:grid-cols-[3fr_1fr_1fr] lg:py-20 lg:text-left text-center">
+        <div className="flex justify-between py-20 lg:py-20 lg:text-left text-center">
           {/* Column 1: Brand & Mission */}
           <div className="flex flex-col items-center lg:items-start">
             <a
@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Navigate */}
-          <div>
+          {/* <div>
             <h3 className="mb-5 font-['Lexend'] font-medium text-white/90">
               Navigate
             </h3>
@@ -74,7 +74,7 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
 
           {/* Column 3: Connect */}
           <div>

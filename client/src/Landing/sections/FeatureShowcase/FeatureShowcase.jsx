@@ -18,7 +18,7 @@ const FeatureShowcase = () => {
   const icons = [<Feather />, <Play />, <Code />];
 
   return (
-    <section className="w-full bg-[#111827] py-32 px-8">
+    <section id="features" className="w-full bg-[#111827] py-32 px-8">
       <div className="mx-auto max-w-7xl text-center">
         <h2 className="font-['Syne'] text-4xl font-bold text-white">
           Build Your Narrative, Block by Block.

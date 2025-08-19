@@ -12,7 +12,10 @@ import FloatingIcon from "./FloatingIcon";
 // --- Main Component ---
 const ContextCollapse = () => {
   return (
-    <section className="relative w-full overflow-hidden bg-[#111827] py-32 px-8 text-[#e5e7eb]">
+    <section
+      id="problem"
+      className="relative w-full overflow-hidden bg-[#111827] py-32 px-8 text-[#e5e7eb]"
+    >
       <div className="absolute inset-0 z-0">
         {icons.map((icon, i) => (
           <FloatingIcon key={i} icon={icon} />
