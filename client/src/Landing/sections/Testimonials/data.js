@@ -1,5 +1,14 @@
+/**
+ * @file data.js
+ * @description Testimonial and tweet data for the landing page.
+ * @module TestimonialsData
+ */
 import { FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
+/**
+ * Array of hero testimonials for the landing page.
+ * @type {Array<Object>}
+ */
 const heroTestimonials = [
   {
     quote:
@@ -19,6 +28,10 @@ const heroTestimonials = [
   },
 ];
 
+/**
+ * Array of tweets for the Wall of Love section.
+ * @type {Array<Object>}
+ */
 const wallOfLoveTweets = [
   {
     handle: "@sarah_dev",

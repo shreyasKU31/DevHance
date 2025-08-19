@@ -1,3 +1,13 @@
+/**
+ * @file features.js
+ * @description Feature showcase data for the landing page.
+ * @module FeatureShowcaseData
+ */
+
+/**
+ * Array of feature objects for the FeatureShowcase section.
+ * @type {Array<Object>}
+ */
 const features = [
   {
     id: "narrative",

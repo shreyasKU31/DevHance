@@ -1,3 +1,8 @@
+/**
+ * @file icons.js
+ * @description Brand icon data for the ContextCollapse section.
+ * @module ContextCollapseIcons
+ */
 import {
   FigmaLogoIcon,
   GitHubLogoIcon,
@@ -6,6 +11,10 @@ import {
   FramerLogoIcon,
 } from "@radix-ui/react-icons";
 
+/**
+ * Array of brand icon objects for floating display.
+ * @type {Array<Object>}
+ */
 const icons = [
   {
     Icon: GitHubLogoIcon,

@@ -1,34 +1,29 @@
 /**
- * @file HeroSection.jsx
+ * @file Hero.jsx
+ * @description Hero section for the landing page with animated headline and CTA.
  * @module HeroSection
- * @description
- * A simplified hero section focusing on the headline and CTAs.
- *
- * @requires framer-motion
- * @requires typewriter-effect
- * @requires lucide-react
  */
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-// Assuming clickPopup is a valid import from your project structure
-// import clickPopup from "../../common/WaitlistForm/Form";
 import { TypeAnimation } from "react-type-animation";
 import { ArrowRight } from "lucide-react";
+import clickPopup from "../../common/WaitlistForm/Form";
 
-// A placeholder for the clickPopup function if it's not available
-const clickPopup = () => console.log("Request Early Access button clicked");
-
+/**
+ * HeroSection component renders the animated headline and CTA for the landing page.
+ * @function
+ * @returns {JSX.Element}
+ */
 const HeroSection = () => {
   const [showTypewriter, setShowTypewriter] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => setShowTypewriter(true), 1200); // 1.2s delay
+    const timer = setTimeout(() => setShowTypewriter(true), 1200);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#111827] p-4 text-[#e5e7eb]">
-      {/* Main Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center p-4">
         <div className="flex flex-col gap-4 text-center">
           <h1 className="font-Syne text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">
@@ -37,33 +32,26 @@ const HeroSection = () => {
               <span className="animated-build ml-4"> Masterpiece.</span>
             </span>
           </h1>
-          {/* Animated Sub-headline using react-type-animation */}
-
-          <div className="mt-4 h-16">
-            {showTypewriter && (
-              <TypeAnimation
-                sequence={[
-                  "Unveil your Process.",
-                  2000,
-                  "Showcase your Story.",
-                  2000,
-                  "Amaze the World.",
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                className="font-['Syne'] text-3xl font-bold text-white md:text-5xl lg:text-6xl"
-                cursor={true}
-                repeat={Infinity}
-              />
-            )}
-          </div>
-
+          {showTypewriter && (
+            <TypeAnimation
+              sequence={[
+                "Built for creators.",
+                2000,
+                "Built for teams.",
+                2000,
+                "Built for you.",
+                2000,
+              ]}
+              wrapper="span"
+              speed={50}
+              className="block text-xl font-medium text-pink-400 md:text-2xl lg:text-3xl mt-2"
+              repeat={Infinity}
+            />
+          )}
           <p className="mx-auto mt-2 max-w-2xl text-base text-gray-200/80 md:text-lg">
             The professional platform where creators don't just show their
             work—they explain its genius.
           </p>
-
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <motion.button
               whileHover={{
@@ -82,7 +70,6 @@ const HeroSection = () => {
               />
             </motion.button>
           </div>
-
           <p className="mt-8 text-sm text-gray-400/60">
             Join innovators from Google, Figma, and MIT.
           </p>
