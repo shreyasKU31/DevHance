@@ -1,7 +1,7 @@
 /*
  * ===================================================================
- * devhance Design System v1.1 (CLEANED)
- * Finalized: August 11, 2025
+ * devhance Complete Design System & Component Styles v1.1
+ * Finalized: August 18, 2025
  * Designer: Shreyas K U
  * ===================================================================
  */
@@ -11,6 +11,7 @@
 /* =============================================
  * 1. ROOT VARIABLES (DESIGN TOKENS)
  * ============================================= */
+
 :root {
   /* -- Colors -- */
   --color-bg: #111827; /* Monsoon Night */
@@ -18,9 +19,6 @@
   --gradient-aura-1: #fc44e7;
   --gradient-aura-2: #46c4fa;
   --gradient-aura-3: #0d9488;
-  --gradient-abyss-1: #231955;
-  --gradient-abyss-2: #1f4690;
-  --gradient-abyss-3: #161616;
 
   /* -- Typography -- */
   --font-heading: "Syne", sans-serif;
@@ -34,9 +32,14 @@
 /* =============================================
  * 2. GLOBAL & TYPOGRAPHY STYLES
  * ============================================= */
-*, *::before, *::after {
+
+/* -- Base Styles -- */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -45,7 +48,10 @@ body {
   line-height: 1.6;
   margin: 0;
 }
-h1, h2, h3 {
+
+h1,
+h2,
+h3 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
@@ -53,80 +59,35 @@ h1, h2, h3 {
 }
 
 /* =============================================
- * 3. GRADIENT UTILITY CLASSES
+ * 3. GLOBAL UTILITY CLASSES
  * ============================================= */
-.bg-gradient-aura {
-  background: linear-gradient(90deg, #fc44e7 0%, #6a59d3 100%);
-}
-.bg-aura-accent {
-  background-color: #fc44e7;
-}
 
-/* =============================================
- * 4. UI MATERIALS & EFFECTS
- * ============================================= */
+/* -- Professional Glass Effect -- */
 .glass-pro {
-  position: relative;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, var(--glass-bg-opacity));
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-}
-.glass-pro::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(to bottom right, rgba(255,255,255,0.25), rgba(255,255,255,0));
-  pointer-events: none;
-}
-.hover\:shadow-aura-glow:hover {
-  box-shadow: 0 0 20px 0 rgba(252, 68, 231, 0.5);
 }
 
-.animated-abyss-background {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+/* -- Gradient Text Highlight -- */
+.highlight-process {
+  color: #fff;
+  background: linear-gradient(
+    95deg,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.blob {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(120px);
-  opacity: 0.4;
-  will-change: transform;
-}
-.blob-1 {
-  width: 24rem;
-  height: 24rem;
-  top: 25%;
-  left: 25%;
-  background-color: #231955;
-  animation: drift 60s infinite alternate linear;
-}
-.blob-2 {
-  width: 30rem;
-  height: 30rem;
-  bottom: 25%;
-  right: 25%;
-  background-color: #1f4690;
-  animation: drift 70s infinite alternate linear;
-}
-@keyframes drift {
-  0% { transform: translate(0px, 0px) rotate(0deg); }
-  25% { transform: translate(100px, -50px) rotate(30deg); }
-  50% { transform: translate(-80px, 70px) rotate(-20deg); }
-  75% { transform: translate(60px, -120px) rotate(15deg); }
-  100% { transform: translate(0px, 0px) rotate(0deg); }
-}
+/* =============================================
+ * 4. COMPONENT-SPECIFIC STYLES
+ * ============================================= */
 
-/* Cursor Spotlight (single definition, fixed for best UX) */
+/* --- Hero Section --- */
 .cursor-spotlight {
   position: fixed;
   left: 0;
@@ -135,52 +96,11 @@ h1, h2, h3 {
   height: 600px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(70, 196, 250, 0.1), transparent 60%);
-  pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: background 0.2s ease;
-}
-
-/* Creator Stream Styles */
-.creator-stream-container {
-  padding-block: 1rem;
-  background: linear-gradient(to top, rgba(17, 24, 39, 0.8), transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-.creator-avatar-wrapper {
-  position: relative;
-  margin: 0 1rem;
-}
-.creator-avatar-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  background: linear-gradient(#111827, #111827) padding-box, linear-gradient(95deg, #fc44e7, #46c4fa) border-box;
-  padding: 3px;
-  transition: transform 0.3s ease;
-}
-.creator-avatar-wrapper:hover .creator-avatar-img {
-  transform: scale(1.1);
-}
-.creator-name-tooltip {
-  position: absolute;
-  bottom: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #1f2937;
-  color: #e5e7eb;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  white-space: nowrap;
   pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
-/* Animated Gradient Text (Hero) */
 .animated-build {
   position: relative;
   display: inline-block;
@@ -191,8 +111,9 @@ h1, h2, h3 {
   -webkit-text-fill-color: transparent;
   animation: pan-gradient 4s linear infinite;
 }
+
 .animated-build::before {
-  content: "Build.";
+  content: "Masterpiece.";
   position: absolute;
   left: 0;
   top: 0;
@@ -204,35 +125,35 @@ h1, h2, h3 {
   filter: blur(12px);
   opacity: 0.8;
 }
+
 @keyframes pan-gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* ContextCollapse Section */
+/* --- Context Collapse Section --- */
 .dotted-background {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
   background-size: 20px 20px;
   opacity: 0.5;
   z-index: 0;
 }
-.sphere-node {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(8px);
-}
-.node-1 { width: 80px; height: 80px; background: #46c4fa; }
-.node-2 { width: 100px; height: 100px; background: #fc44e7; }
-.node-3 { width: 60px; height: 60px; background: #0d9488; }
-.connecting-lines {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-}
+
 .inline-icon {
   display: inline-block;
   vertical-align: middle;
@@ -240,15 +161,8 @@ h1, h2, h3 {
   transform: translateY(-2px);
   color: rgba(229, 231, 235, 0.6);
 }
-.highlight-process {
-  color: #fff;
-  background: linear-gradient(95deg, #fc44e7, #46c4fa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
-/* FeatureShowcase Section */
+/* --- Feature Showcase Section --- */
 .active-feature-bar {
   position: absolute;
   left: 0;
@@ -256,15 +170,32 @@ h1, h2, h3 {
   bottom: 1.5rem;
   width: 4px;
   border-radius: 2px;
-  background: linear-gradient(to bottom, #fc44e7, #46c4fa);
-  box-shadow: 0 0 15px #46c4fa;
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2)
+  );
+  box-shadow: 0 0 15px var(--gradient-aura-2);
 }
 
-/* Testimonials Section */
+/* --- Testimonials Section --- */
 .wall-of-love-container {
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
 }
+
 .tweet-card {
   display: flex;
   align-items: flex-start;
@@ -273,24 +204,169 @@ h1, h2, h3 {
   width: 350px;
   background-color: #1f2937;
   border-radius: 1rem;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* WaitlistCTA Section */
+/* --- Waitlist CTA Section --- */
 .animate-liquid-light {
-  background: linear-gradient(135deg, #fc44e7, #46c4fa, #0d9488);
+  background: linear-gradient(
+    135deg,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2),
+    var(--gradient-aura-3)
+  );
   background-size: 400% 400%;
   animation: liquid-light-animation 20s ease infinite;
 }
+
 @keyframes liquid-light-animation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
+
 .focus\:shadow-aura-glow:focus {
   box-shadow: 0 0 15px rgba(70, 196, 250, 0.4);
 }
-/* Gradient for the button hover state */
-.bg-gradient-aura {
-  background-image: linear-gradient(to right, #fc44e7, #46c4fa);
+
+/* --- Footer Section --- */
+.gradient-separator {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+.footer-link {
+  position: relative;
+  color: rgba(229, 231, 235, 0.7);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.footer-link:hover::after {
+  transform: scaleX(1);
+}
+
+.social-icon {
+  font-size: 24px;
+  color: rgba(229, 231, 235, 0.7);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--gradient-aura-2);
+  transform: translateY(-2px);
+}
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/**
+ * @file Navbar.css
+ * @description Minimal custom styles for the Navbar component.
+ */
+
+/* --- Main Navbar Container --- */
+.navbar-glass {
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Logo / Brand --- */
+.brand-text {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+/* --- Desktop Link Underline --- */
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: rgba(229, 231, 235, 0.7);
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #ffffff;
+}
+.nav-link-underline {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-link:hover .nav-link-underline {
+  transform: scaleX(1);
+}
+
+/* --- Sign Up Button --- */
+.signup-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  color: #ffffff;
+  background: linear-gradient(95deg, #fc44e7, #46c4fa);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.signup-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(252, 68, 231, 0.3);
+}
+
+/* --- Mobile Menu --- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #111827; /* --color-bg */
+  z-index: 40;
+  transition: opacity 0.4s ease;
+}
+
+.aura-bg {
+  background: linear-gradient(
+    95deg,
+    var(--gradient-aura-1),
+    var(--gradient-aura-2)
+  );
 }
