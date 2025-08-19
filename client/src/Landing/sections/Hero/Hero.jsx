@@ -11,8 +11,6 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FiArrowRight } from "react-icons/fi";
-import Typewriter from "typewriter-effect";
 import clickPopup from "../../common/WaitlistForm/Form";
 
 const HeroSection = () => {
@@ -32,29 +30,10 @@ const HeroSection = () => {
               <span className="animated-build ml-4"> Masterpiece.</span>
             </span>
             <div className="mt-2">
-              {!showTypewriter ? (
-                <span className="text-4xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight">
-                  Unveil your Process. Showcase your Story. Amaze the World.
-                </span>
-              ) : (
-                <Typewriter
-                  options={{
-                    strings: [
-                      "Unveil your Process.",
-                      "Showcase your Story.",
-                      "Amaze the World.",
-                    ],
-                    autoStart: true,
-                    loop: true,
-                    delay: 75,
-                    deleteSpeed: 50,
-                    wrapperClassName:
-                      "text-4xl md:text-6xl lg:text-7xl text-white font-bold tracking-tight",
-                    cursorClassName:
-                      "text-4xl md:text-6xl lg:text-7xl text-[#fc44e7]",
-                  }}
-                />
-              )}
+              <span className="text-4xl md:text-5xl lg:text-6xl text-white">
+                Every Project Has a Story.
+                <br /> Tell It Here.
+              </span>
             </div>
           </h1>
           <p className="mt-2 text-base md:text-lg max-w-2xl mx-auto text-gray-200/80">
@@ -73,7 +52,7 @@ const HeroSection = () => {
               className="group aura-bg inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full bg-gradient-aura w-full sm:w-auto"
             >
               Request Early Access
-              <FiArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              <i className="fa-solid fa-arrow-right"></i>
             </motion.button>
             {/* <button className="group relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-gray-300 rounded-full border-gradient-aura-animated hover-glass-pro w-full sm:w-auto transition-colors duration-300 hover:text-white">
               <FiEye className="mr-2" /> Explore Projects

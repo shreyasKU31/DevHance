@@ -5,7 +5,7 @@
  * @requires react, framer-motion, react-icons/hi
  */
 import React, { useState, useEffect } from "react";
-import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
 import clickPopup from "../WaitlistForm/Form";
 
 // --- Main Component ---
@@ -90,7 +90,11 @@ const Navbar = () => {
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
-              {isMobileMenuOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
+              {isMobileMenuOpen ? (
+                <Cross1Icon size={28} />
+              ) : (
+                <HamburgerMenuIcon size={28} />
+              )}
             </button>
           </div>
         </nav>

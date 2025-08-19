@@ -40,7 +40,7 @@ const HeroTestimonialCard = ({
           <p className="text-sm text-gray-400">{title}</p>
         </div>
       </div>
-      <CompanyIcon className="text-4xl text-white/50" />
+      <CompanyIcon className="text-4xl text-white/50" width={36} height={36} />
     </div>
   </motion.div>
 );

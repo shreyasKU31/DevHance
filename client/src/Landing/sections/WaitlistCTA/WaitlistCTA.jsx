@@ -6,7 +6,7 @@
  */
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiCheckCircle } from "react-icons/fi";
+import { CheckCircle } from "lucide-react";
 import clickPopup from "../../common/WaitlistForm/Form";
 
 // --- Main Component ---
@@ -84,7 +84,7 @@ const WaitlistCTA = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
               >
-                <FiCheckCircle className="text-2xl" />
+                <CheckCircle className="text-2xl" />
                 <span>You're on the list! We'll be in touch soon.</span>
               </motion.div>
             )}

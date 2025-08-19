@@ -1,4 +1,4 @@
-import { FaFigma, FaGoogle } from "react-icons/fa";
+import { FigmaLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 const heroTestimonials = [
   {
@@ -7,7 +7,7 @@ const heroTestimonials = [
     author: "Elena Rodriguez",
     title: "Lead Product Designer at Figma",
     headshot: "https://i.pravatar.cc/150?img=1",
-    CompanyIcon: FaFigma,
+    CompanyIcon: FigmaLogoIcon,
   },
   {
     quote:
@@ -15,7 +15,7 @@ const heroTestimonials = [
     author: "Marcus Chen",
     title: "Senior Frontend Engineer at Google",
     headshot: "https://i.pravatar.cc/150?img=2",
-    CompanyIcon: FaGoogle,
+    CompanyIcon: GitHubLogoIcon,
   },
 ];
 

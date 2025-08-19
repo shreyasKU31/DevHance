@@ -10,10 +10,12 @@ import MediaVisualizer from "./MediaVisualizer";
 import CodeVisualizer from "./CodeVisualizer";
 import NarrativeVisualizer from "./NarrativeVisualizer";
 import features from "./features.js";
+import { Feather, Play, Code } from "lucide-react";
 
 // --- Main Component ---
 const FeatureShowcase = () => {
   const [activeFeature, setActiveFeature] = useState(features[0].id);
+  const icons = [<Feather />, <Play />, <Code />];
 
   return (
     <section className="w-full bg-[#111827] py-32 px-8">
@@ -30,7 +32,7 @@ const FeatureShowcase = () => {
       <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 items-start gap-16 md:grid-cols-3">
         {/* Left Column: Feature Control Panel */}
         <div className="flex flex-col gap-4">
-          {features.map((feature) => (
+          {features.map((feature, i) => (
             <div
               key={feature.id}
               onClick={() => setActiveFeature(feature.id)}
@@ -50,7 +52,7 @@ const FeatureShowcase = () => {
                       : "text-gray-400"
                   }`}
                 >
-                  <feature.Icon />
+                  {icons[i]}
                 </div>
                 <h3
                   className={`mb-2 font-['Syne'] text-lg font-bold ${
