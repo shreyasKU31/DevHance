@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function FeaturedPost({ post }) {
   if (!post) return null;
   console.log(post);
