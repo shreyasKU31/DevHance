@@ -1,4 +1,5 @@
-import BlogLayout from "../components/BlogLayout";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 import FeaturedPost from "../components/FeaturedPost";
 import CategoryFilters from "../components/CategoryFilters";
 import BlogGrid from "../components/BlogGrid";
@@ -8,7 +9,8 @@ import { useState } from "react";
 const posts = [
   {
     href: "/blog/featured-case-study",
-    image: "/file.svg",
+    image:
+      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80",
     category: "Case Study",
     title: "How We Designed the Next-Gen Portfolio Platform",
     excerpt:
@@ -18,7 +20,8 @@ const posts = [
   },
   {
     href: "/blog/design-systems",
-    image: "/globe.svg",
+    image:
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
     category: "Design",
     title: "Design Systems for Fast-Moving Teams",
     excerpt:
@@ -27,7 +30,8 @@ const posts = [
   },
   {
     href: "/blog/engineering-culture",
-    image: "/vercel.svg",
+    image:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
     category: "Engineering",
     title: "Engineering Culture at devhance",
     excerpt:
@@ -36,7 +40,8 @@ const posts = [
   },
   {
     href: "/blog/community-growth",
-    image: "/window.svg",
+    image:
+      "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80",
     category: "Community",
     title: "Growing a Creative Community from Scratch",
     excerpt:
@@ -45,7 +50,8 @@ const posts = [
   },
   {
     href: "/blog/announcing-beta",
-    image: "/next.svg",
+    image:
+      "https://images.unsplash.com/photo-1496449903678-68ddcb189a24?auto=format&fit=crop&w=600&q=80",
     category: "Announcements",
     title: "Announcing devhance Beta Launch",
     excerpt:
@@ -73,8 +79,13 @@ export default function HomePage() {
         );
 
   return (
-    <BlogLayout>
-      <header className="flex flex-col items-center justify-center py-20 px-4 text-center">
+    <div className="min-h-screen bg-[#F9FAFB]">
+      <NavBar />
+      {/* Hero Section with animated gradient background */}
+      <section className="relative flex flex-col items-center justify-center py-24 px-4 text-center overflow-hidden">
+        <div className="absolute inset-0 -z-10 flex items-center justify-center">
+          <div className="w-[700px] h-[400px] rounded-full blur-3xl opacity-60 bg-gradient-to-tr from-[#a5b4fc] via-[#f472b6] to-[#38bdf8] animate-gradient-move" />
+        </div>
         <h1 className="font-syne font-bold text-[56px] text-primary mb-4">
           The devhance Logbook
         </h1>
@@ -82,10 +93,11 @@ export default function HomePage() {
           Insights on design, engineering, and the art of showcasing creative
           work.
         </p>
-      </header>
+      </section>
       <FeaturedPost post={featured} />
       <CategoryFilters active={activeCategory} onChange={setActiveCategory} />
       <BlogGrid posts={filtered} />
-    </BlogLayout>
+      <Footer />
+    </div>
   );
 }
