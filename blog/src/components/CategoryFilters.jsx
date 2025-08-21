@@ -15,7 +15,7 @@ export default function CategoryFilters({ active, onChange }) {
           className={`px-5 py-2 rounded-full font-lexend text-sm transition-colors
             ${
               active === cat.value
-                ? "bg-accent text-white"
+                ? "gradient-border text-black"
                 : "bg-gray-100 text-secondary hover:bg-accent/10"
             }`}
           onClick={() => onChange(cat.value)}

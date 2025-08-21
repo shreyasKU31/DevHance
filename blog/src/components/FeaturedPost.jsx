@@ -1,6 +1,5 @@
 export default function FeaturedPost({ post }) {
   if (!post) return null;
-  console.log(post);
   return (
     <section className="flex flex-col md:flex-row items-center justify-center max-w-4xl mx-auto bg-card shadow-soft rounded-xl overflow-hidden mb-12">
       <div className="w-full md:w-2/5 h-64 md:h-auto relative">
@@ -18,7 +17,7 @@ export default function FeaturedPost({ post }) {
         </p>
         <a
           href={post.href}
-          className="font-lexend text-accent text-base mt-2 hover:underline"
+          className="w-50 brand-bg font-lexend text-accent text-base mt-2 hover:underline"
         >
           Read Full Story &rarr;
         </a>

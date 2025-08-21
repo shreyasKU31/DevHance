@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-.signup-button {
+.brand-bg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +11,34 @@
   background: linear-gradient(95deg, #fc44e7, #46c4fa);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.signup-button:hover {
+.brand-bg:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(252, 68, 231, 0.3);
+}
+
+/**
+ * Creates a 2px gradient border using the brand's "Aura" colors.
+ * This updated version uses the background-clip property for a more robust effect.
+ */
+.gradient-border {
+  /* 1. Create space for the border */
+  border: 3px solid transparent;
+
+  /* 2. Define two backgrounds:
+     - The first is a solid color for the content area (padding-box).
+     - The second is the gradient for the border area (border-box).
+  */
+  background: linear-gradient(
+        to right,
+        var(--color-bg, #f9fafb),
+        var(--color-bg, #f9fafb)
+      )
+      padding-box,
+    linear-gradient(95deg, #fc44e7, #46c4fa) border-box;
+
+  /* 3. Apply the backgrounds to their respective areas */
+  background-clip: padding-box, border-box;
+
+  /* Ensure the element has a border-radius for the effect to be visible */
+  border-radius: 9999px; /* Example for a pill shape */
 }

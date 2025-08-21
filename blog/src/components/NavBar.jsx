@@ -30,7 +30,7 @@ export default function NavBar() {
       <div>
         <a
           href="#"
-          className="signup-button rounded-full bg-gradient-aura px-6 py-2 font-lexend text-white shadow-soft transition-transform hover:-translate-y-1"
+          className="brand-bg rounded-full bg-gradient-aura px-6 py-2 font-lexend text-white shadow-soft transition-transform hover:-translate-y-1"
         >
           Join Waitlist
         </a>
