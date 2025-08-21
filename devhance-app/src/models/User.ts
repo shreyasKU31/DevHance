@@ -9,7 +9,7 @@ import mongoose, { Schema, Document, models, Model } from "mongoose";
 // This defines the shape of a user document.
 export interface IUser extends Document {
   clerkId: string;
-  username: string;
+  username?: string;
   name?: string;
   photo?: string;
   headline?: string;
@@ -23,7 +23,7 @@ export interface IUser extends Document {
 // --- Mongoose Schema ---
 const userSchema: Schema = new Schema({
   clerkId: { type: String, required: true, unique: true },
-  username: { type: String, required: true, unique: true },
+  username: { type: String, unique: true, sparse: true },
   name: { type: String },
   photo: { type: String },
   headline: { type: String },
