@@ -2,7 +2,7 @@
  * @file create.tsx
  * @module CreateProject
  * @description The page for creating a new project story with a full-featured Tiptap editor.
- * @requires react, lucide-react, @tiptap/react, @tiptap/starter-kit, @tiptap/extension-link, @tiptap/extension-image
+ * @requires react, lucide-react, @tiptap/react, @tiptap/starter-kit, @tiptap/extension-link, @tiptap/extension-image, @tiptap/extension-code-block-lowlight, lowlight
  */
 import React, { useState, useCallback } from "react";
 import { useRouter } from "next/router";
@@ -11,6 +11,18 @@ import StarterKit from "@tiptap/starter-kit";
 import Link from "next/link";
 import Image from "@tiptap/extension-image";
 import TiptapLink from "@tiptap/extension-link";
+// --- SYNTAX HIGHLIGHTING IMPORTS ---
+import CodeBlockLowlight from "@tiptap/extension-code-block-lowlight";
+import { createLowlight } from "lowlight";
+import javascript from "highlight.js/lib/languages/javascript";
+import typescript from "highlight.js/lib/languages/typescript";
+import css from "highlight.js/lib/languages/css";
+import python from "highlight.js/lib/languages/python";
+import java_ from "highlight.js/lib/languages/java"; // 'java' is a reserved keyword
+import bash from "highlight.js/lib/languages/bash";
+import json from "highlight.js/lib/languages/json";
+import xml from "highlight.js/lib/languages/xml"; // For HTML
+
 import {
   Loader,
   Save,
@@ -27,6 +39,20 @@ import {
   Link2,
   Image as ImageIcon,
 } from "lucide-react";
+
+// --- Import a syntax highlighting theme ---
+import "highlight.js/styles/atom-one-dark.css";
+
+const lowlight = createLowlight();
+// Register the languages you want to support
+lowlight.register("javascript", javascript);
+lowlight.register("typescript", typescript);
+lowlight.register("css", css);
+lowlight.register("python", python);
+lowlight.register("java", java_);
+lowlight.register("bash", bash);
+lowlight.register("json", json);
+lowlight.register("html", xml);
 
 // --- Tiptap MenuBar Component ---
 const MenuBar = ({ editor }: { editor: Editor | null }) => {
@@ -57,7 +83,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
   const activeMenuButtonClass = "bg-gray-700 text-white";
 
   return (
-    <div className="flex flex-wrap items-center gap-2 rounded-t-lg border-b border-white/10 bg-gray-800 p-2">
+    <div className="flex flex-wrap items-center gap-2 rounded-lg border-b border-white/10 bg-gray-800 p-2">
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
         className={`${menuButtonClass} ${
@@ -82,10 +108,11 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       >
         <Strikethrough size={18} />
       </button>
+      {/* UPDATED: This now toggles a code block */}
       <button
-        onClick={() => editor.chain().focus().toggleCode().run()}
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
         className={`${menuButtonClass} ${
-          editor.isActive("code") ? activeMenuButtonClass : ""
+          editor.isActive("codeBlock") ? activeMenuButtonClass : ""
         }`}
       >
         <Code size={18} />
@@ -168,28 +195,33 @@ const CreateProjectPage = () => {
 
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      // We configure StarterKit to use our new CodeBlock extension
+      StarterKit.configure({
+        codeBlock: false, // Disable the default code block
+      }),
+      CodeBlockLowlight.configure({
+        lowlight,
+      }),
       TiptapLink.configure({
         openOnClick: false,
         autolink: true,
       }),
       Image,
     ],
+    immediatelyRender: false,
     content:
       "<h2>Getting Started</h2><p>Welcome to the editor! This is where you can tell the story behind your project, detailing the challenges you faced and the solutions you created.</p>",
-    // FIX: Added 'immediatelyRender: false' to prevent the SSR hydration error.
-    immediatelyRender: false,
     editorProps: {
       attributes: {
         class:
-          "text-white p-8 border-2 border-gray-600 rounded-2xl focus:outline-none min-h-[400px] w-full max-w-full",
+          "prose prose-invert border-2 border-gray-700 rounded-2xl p-8 focus:outline-none min-h-[400px] w-full max-w-full",
       },
     },
   });
 
   const handleSave = async () => {
     setIsSaving(true);
-    const content = editor?.getJSON();
+    const content = editor?.getHTML();
     const projectData = { title, content };
 
     const res = await fetch("/api/projects", {
@@ -207,7 +239,7 @@ const CreateProjectPage = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto py-16 px-8">
+    <div className="w-full max-w-4xl mx-auto my-6 px-8">
       <div className="mb-8 flex items-center justify-between">
         <h2 className="font-['Syne'] text-3xl font-bold text-white">
           Create a New Story
@@ -219,7 +251,7 @@ const CreateProjectPage = () => {
           <button
             onClick={handleSave}
             disabled={isSaving}
-            className="aura-gradient flex items-center gap-2 rounded-full px-8 py-4 font-semibold text-white transition-transform hover:scale-105 disabled:opacity-50"
+            className="brand flex items-center gap-2 rounded-full px-8 py-4 font-semibold text-white transition-transform hover:scale-105 disabled:opacity-50"
           >
             {isSaving ? (
               <Loader className="animate-spin" />
