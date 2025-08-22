@@ -38,29 +38,63 @@ body {
   color: #111827; /* Dark background color */
 }
 
-/* --- Tiptap Editor Content --- */
-.prose .blockquote {
+/* --- General Prose Styles --- */
+.prose {
+  /* This ensures text color is white, overriding typography defaults */
+  color: #e5e7eb;
+}
+
+.prose h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+/* --- List Styling Fix --- */
+.prose ul,
+.prose ol {
+  /* This forces the browser to use the standard list styling */
+  list-style: revert;
+  margin-left: 1.5rem; /* Adds indentation for the lists */
+  padding-left: 1rem;
+}
+
+.prose ul {
+  list-style-type: disc; /* Ensures bullet points are visible */
+}
+
+.prose ol {
+  list-style-type: decimal; /* Ensures numbers are visible */
+}
+
+/* --- Blockquote Styling --- */
+.prose blockquote {
   padding-left: 1rem;
   border-left: 3px solid #46c4fa; /* Aura 2 blue */
   color: #9ca3af; /* gray-400 */
   font-style: italic;
-  /* UPDATED: Added a subtle background color for differentiation */
   background-color: rgba(70, 196, 250, 0.05);
   border-radius: 0 0.5rem 0.5rem 0;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
+/* --- Code Block Styling --- */
 .prose pre {
-  background-color: #1f2937; /* gray-800 */
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  color: #d1d5db; /* gray-300 */
+  background-color: #2d3748; /* A dark background that fits the theme */
+  color: #e2e8f0; /* Light-colored text for contrast */
+  font-family: "Fira Code", "Courier New", monospace; /* A proper monospaced font */
+  padding: 16px; /* Adds comfortable spacing inside the block */
+  border-radius: 8px; /* Gives it modern, rounded corners */
+  overflow-x: auto; /* CRITICAL: Adds a horizontal scrollbar if content is too long */
+  white-space: pre; /* Preserves whitespace and prevents unwanted line wraps */
 }
 
 .prose code {
-  font-family: "Courier New", Courier, monospace;
+  /* Ensures the <code> tag inside <pre> uses the same font */
+  font-family: inherit;
+}
+.prose a {
+  color: #46c4fa;
 }
 
 .prose img {
