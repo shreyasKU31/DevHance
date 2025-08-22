@@ -21,7 +21,7 @@ const DashboardNavbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "/dashboard", label: "My Projects" },
+    { href: "/", label: "Add Projects" },
     { href: "/showcase", label: "Explore" },
   ];
 
@@ -35,7 +35,7 @@ const DashboardNavbar = () => {
           {/* Left Side: Logo and Desktop Links */}
           <div className="flex items-center gap-8">
             <Link
-              href="/dashboard"
+              href="/"
               className="font-['Syne'] text-2xl font-bold text-white"
             >
               devhance

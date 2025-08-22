@@ -14,9 +14,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Get the authenticated user's ID from Clerk
   const { userId: clerkId } = getAuth(req);
-
   if (!clerkId) {
     return res.status(401).json({ error: "Not authenticated" });
   }
@@ -24,27 +22,36 @@ export default async function handler(
   await dbConnect();
 
   try {
-    // Find our internal user document based on the Clerk ID
     const user = await User.findOne({ clerkId });
     if (!user) {
       return res.status(404).json({ error: "User not found in our database" });
     }
 
     switch (req.method) {
-      // --- FETCH ALL PROJECTS FOR THE USER ---
       case "GET":
         const projects = await ProjectStory.find({ authorId: user._id })
-          .sort({ updatedAt: -1 }) // Show the most recently updated first
-          .select("_id title status"); // Only select the fields needed for the list view
-
+          .sort({ updatedAt: -1 })
+          .select("_id title status");
         return res.status(200).json(projects);
 
-      // --- CREATE A NEW, EMPTY PROJECT ---
       case "POST":
+        // Get the title and the 'content' JSON object from the request body
+        const { title, content } = req.body;
+
+        // Basic validation
+        if (!title || !content) {
+          return res
+            .status(400)
+            .json({ error: "Title and content are required." });
+        }
+
         const newProject = await ProjectStory.create({
           authorId: user._id,
-          title: "Untitled Project", // Default title
-          slug: `untitled-${Date.now()}`, // Simple unique slug
+          title: title,
+          // Create a simple, unique slug from the title
+          slug: title.toLowerCase().replace(/\s+/g, "-") + `-${Date.now()}`,
+          // Directly save the JSON object from Tiptap into the 'content' field
+          content: content,
           status: "Draft",
         });
 

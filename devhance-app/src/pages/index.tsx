@@ -1,7 +1,7 @@
 /**
- * @file DashboardMain.tsx
- * @module DashboardMain
- * @description The main content area for the user's dashboard.
+ * @file index.tsx
+ * @module Dashboard
+ * @description The main dashboard page for the application root.
  * @requires react, framer-motion, lucide-react, swr
  */
 import React from "react";
@@ -119,7 +119,7 @@ const Home = () => {
 
   const handleCreateNew = () => {
     // UPDATED: Navigate to the new editor page
-    router.push("/dashboard/create");
+    router.push("/projects/create");
   };
 
   if (isLoading) return <LoadingState />;
