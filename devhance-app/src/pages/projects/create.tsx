@@ -192,6 +192,12 @@ const CreateProjectPage = () => {
   const router = useRouter();
   const [title, setTitle] = useState("");
   const [isSaving, setIsSaving] = useState(false);
+  const [problem, setProblem] = useState("");
+  const [contribution, setContribution] = useState("");
+  const [techStack, setTechStack] = useState("");
+  const [outcomes, setOutcomes] = useState("");
+  const [liveDemo, setLiveDemo] = useState("");
+  const [repoLink, setRepoLink] = useState("");
 
   const editor = useEditor({
     extensions: [
@@ -214,24 +220,41 @@ const CreateProjectPage = () => {
     editorProps: {
       attributes: {
         class:
-          "prose prose-invert border-2 border-gray-700 rounded-2xl p-8 focus:outline-none min-h-[400px] w-full max-w-full",
+          "prose prose-invert border-2 border-gray-700 rounded-2xl p-8 focus:outline-none min-h-[400px] w-full max-w-full form-input",
       },
     },
   });
 
   const handleSave = async () => {
     setIsSaving(true);
-    const content = editor?.getJSON();
-    const projectData = { title, content };
+    // Get the structured JSON content from the Tiptap editor
+    const challengesAndSolutions = editor?.getJSON();
 
-    const res = await fetch("/api/projects", {
+    // CORRECTED: Gather all data from the form's state into one object
+    const projectData = {
+      title,
+      problem,
+      contribution,
+      techStack: techStack
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag), // Convert to array and remove empty tags
+      challengesAndSolutions,
+      outcomesAndLearnings: outcomes,
+      links: {
+        liveDemo,
+        repository: repoLink,
+      },
+    };
+
+    const res = await fetch("http://localhost:3000/api/projects", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(projectData),
     });
 
     if (res.ok) {
-      router.push("/");
+      router.push("/"); // Redirect to dashboard on success
     } else {
       console.error("Failed to save project");
       setIsSaving(false);
@@ -241,7 +264,7 @@ const CreateProjectPage = () => {
   return (
     <div className="w-full max-w-4xl mx-auto my-6 px-8">
       <div className="mb-8 flex items-center justify-between">
-        <h2 className="font-['Syne'] text-3xl font-bold text-white">
+        <h2 className="font-['Syne'] text-4xl font-bold text-white">
           Create a New Story
         </h2>
         <div className="flex items-center gap-4">
@@ -264,17 +287,108 @@ const CreateProjectPage = () => {
       </div>
 
       <div className="space-y-6">
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Project Title"
-          className="w-full rounded-lg border border-white/10 bg-white/5 p-4 text-2xl font-bold text-white focus:border-blue-500 focus:outline-none"
-        />
+        <div className="text-white">
+          <div className="mb-6">
+            <label htmlFor="title" className="text-[1.3rem]">
+              Title :
+            </label>
+            <input
+              type="text"
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Project Title"
+              className="inline border-2 border-gray-700 rounded-xl mt-2 py-2 px-4 w-full form-input"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="problem" className="text-[1.3rem]">
+              Problem :
+            </label>
+            <textarea
+              value={problem}
+              id="problem"
+              onChange={(e) => setProblem(e.target.value)}
+              placeholder="The 'Why': What was the challenge or user need?"
+              className="inline border-2 border-gray-700 rounded-xl mt-2 py-2 px-4 w-full form-input"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="contribution" className="text-[1.3rem]">
+              Contribution :
+            </label>
+            <textarea
+              value={contribution}
+              id="contribution"
+              onChange={(e) => setContribution(e.target.value)}
+              placeholder="My Role & Contribution: What specific part did I own?"
+              className="border-2 border-gray-700 rounded-xl mt-2 py-2 px-4 w-full form-input"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="stack" className="text-[1.3rem]">
+              Tech Stack :
+            </label>
+            <input
+              type="text"
+              id="stack"
+              value={techStack}
+              onChange={(e) => setTechStack(e.target.value)}
+              placeholder="Tech Stack (e.g., React, Node.js, PostgreSQL)"
+              className="border-2 border-gray-700 rounded-xl mt-2 py-2 px-4 w-full form-input"
+            />
+          </div>
+        </div>
         <div className="glass-pro rounded-lg">
-          <MenuBar editor={editor} />
-          <div className="p-4">
-            <EditorContent editor={editor} />
+          <label htmlFor="editor" className="text-white text-[1.3rem]">
+            The "How" - Key Technical Challenges & Solutions
+          </label>
+          <div className="mt-4">
+            <MenuBar editor={editor} />
+            <div className="mt-4" id="editor">
+              <EditorContent editor={editor} />
+            </div>
+          </div>
+        </div>
+
+        <div className="text-white">
+          <div className="mb-6">
+            <label htmlFor="outcomes" className="text-[1.3rem]">
+              Outcomes :
+            </label>
+            <textarea
+              id="outcomes"
+              value={outcomes}
+              onChange={(e) => setOutcomes(e.target.value)}
+              placeholder="Outcomes & Learnings"
+              className="border-2 border-gray-700 rounded-xl mt-2 py-2 px-4 w-full form-input"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="liveDemo" className="text-[1.3rem]">
+              Live Demo :
+            </label>
+            <input
+              type="url"
+              id="liveDemo"
+              value={liveDemo}
+              onChange={(e) => setLiveDemo(e.target.value)}
+              placeholder="Live Demo URL"
+              className="border-2 border-gray-700 rounded-xl mt-2 py-2 px-4 w-full form-input"
+            />
+          </div>
+          <div className="mb-6">
+            <label htmlFor="repoLink" className="text-[1.3rem]">
+              Repo URL :
+            </label>
+            <input
+              type="url"
+              id="repoLink"
+              value={repoLink}
+              onChange={(e) => setRepoLink(e.target.value)}
+              placeholder="Code Repository URL"
+              className="border-2 border-gray-700 rounded-xl mt-2 py-2 px-4 w-full form-input"
+            />
           </div>
         </div>
       </div>

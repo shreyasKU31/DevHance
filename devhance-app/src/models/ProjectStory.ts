@@ -13,9 +13,9 @@ export interface IProjectStory extends Document {
   problem?: string;
   contribution?: string;
   techStack?: string[];
-  challengesAndSolutions?: string; // Rich text field
+  content?: object; // This will store the JSON from Tiptap
   outcomesAndLearnings?: string;
-  media?: string[]; // Array of image/GIF URLs
+  media?: string[];
   links?: {
     liveDemo?: string;
     repository?: string;
@@ -37,7 +37,7 @@ const projectStorySchema: Schema = new Schema(
     problem: { type: String },
     contribution: { type: String },
     techStack: [{ type: String }],
-    challengesAndSolutions: { type: String },
+    content: { type: Object }, // Changed from String to Object
     outcomesAndLearnings: { type: String },
     media: [{ type: String }],
     links: {
@@ -48,10 +48,8 @@ const projectStorySchema: Schema = new Schema(
   { timestamps: true }
 );
 
-// Ensure a user can't have two projects with the same slug
 projectStorySchema.index({ authorId: 1, slug: 1 }, { unique: true });
 
-// --- Mongoose Model ---
 const ProjectStory: Model<IProjectStory> =
   models.ProjectStory ||
   mongoose.model<IProjectStory>("ProjectStory", projectStorySchema);
