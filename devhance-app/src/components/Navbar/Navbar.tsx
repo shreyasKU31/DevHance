@@ -21,7 +21,7 @@ const DashboardNavbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "/project/create", label: "Add Projects" },
+    { href: "/projects/create", label: "Add Projects" },
     { href: "/showcase", label: "Explore" },
   ];
 
