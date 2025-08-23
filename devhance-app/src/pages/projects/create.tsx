@@ -221,7 +221,7 @@ const CreateProjectPage = () => {
 
   const handleSave = async () => {
     setIsSaving(true);
-    const content = editor?.getHTML();
+    const content = editor?.getJSON();
     const projectData = { title, content };
 
     const res = await fetch("/api/projects", {
