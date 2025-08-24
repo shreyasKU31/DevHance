@@ -6,7 +6,7 @@
  */
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { UserButton } from "@clerk/nextjs";
+import { UserButton, useUser } from "@clerk/nextjs";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { SignInButton, SignedOut, SignedIn } from "@clerk/nextjs";
@@ -15,7 +15,7 @@ const DashboardNavbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // State to prevent hydration errors by ensuring client-side components only render on the client
   const [isMounted, setIsMounted] = useState(false);
-
+  const { user } = useUser();
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -67,7 +67,10 @@ const DashboardNavbar = () => {
                   </div>
                 </SignedOut>
                 <SignedIn>
-                  <UserButton />
+                  <div className="flex gap-3">
+                    <p>@{user?.username}</p>
+                    <UserButton />
+                  </div>
                 </SignedIn>
               </div>
             )}
