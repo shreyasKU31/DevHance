@@ -16,7 +16,7 @@ const GridBeamBackground = () => {
       {/* The animated, glowing beams */}
       <motion.div
         className="beam beam-1"
-        animate={{ x: ["100%", "-100%"], y: ["50%", "50%"] }}
+        animate={{ x: ["100%", "-100%"], y: ["50%", "-50%"] }}
         transition={{
           duration: 25,
           repeat: Infinity,
@@ -26,7 +26,7 @@ const GridBeamBackground = () => {
       />
       <motion.div
         className="beam beam-2"
-        animate={{ x: ["-100%", "100%"], y: ["-50%", "-50%"] }}
+        animate={{ x: ["-100%", "100%"], y: ["-50%", "50%"] }}
         transition={{
           duration: 25,
           repeat: Infinity,
@@ -36,7 +36,7 @@ const GridBeamBackground = () => {
       />
       <motion.div
         className="beam beam-3"
-        animate={{ x: ["100%", "-100%"], y: ["-50%", "50%"] }}
+        animate={{ x: ["100%", "-100%"], y: ["50%", "-50%"] }}
         transition={{
           duration: 25,
           repeat: Infinity,
@@ -46,7 +46,7 @@ const GridBeamBackground = () => {
       />
       <motion.div
         className="beam beam-4"
-        animate={{ x: ["-100%", "100%"], y: ["-50%", "-50%"] }}
+        animate={{ x: ["-100%", "100%"], y: ["-50%", "50%"] }}
         transition={{
           duration: 25,
           repeat: Infinity,

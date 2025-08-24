@@ -36,9 +36,11 @@ const Home = () => {
   if (error) return <div>Failed to load projects.</div>;
 
   return (
-    <>
-      <GridBeamBackground />
-      <main className="flex flex-grow items-center justify-center p-8">
+    <main>
+      <div className="absolute inset-0 -z-10">
+        <GridBeamBackground />
+      </div>
+      <div className="flex flex-grow items-center justify-center p-8">
         <div className="w-full max-w-4xl">
           {projects && projects.length > 0 ? (
             <DataState projects={projects} onCreate={handleCreateNew} />
@@ -46,8 +48,8 @@ const Home = () => {
             <EmptyState onCreate={handleCreateNew} />
           )}
         </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 };
 
