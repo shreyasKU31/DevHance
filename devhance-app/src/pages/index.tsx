@@ -11,7 +11,7 @@ import useSWR from "swr";
 import { useRouter } from "next/router";
 import DataState from "@/components/root/DataState";
 import EmptyState from "@/components/root/EmptyState";
-import GridBeamBackground from "@/components/GridBeamBackground";
+import Welcome from "@/components/root/Welcome";
 
 // --- API Fetcher Function for SWR ---
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -36,11 +36,9 @@ const Home = () => {
   if (error) return <div>Failed to load projects.</div>;
 
   return (
-    <main>
-      <div className="absolute inset-0 -z-10">
-        <GridBeamBackground />
-      </div>
-      <div className="flex flex-grow items-center justify-center p-8">
+    <main>      
+      <div className="flex flex-grow flex-col items-center justify-center p-8">
+        <Welcome/>
         <div className="w-full max-w-4xl">
           {projects && projects.length > 0 ? (
             <DataState projects={projects} onCreate={handleCreateNew} />
