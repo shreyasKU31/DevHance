@@ -1,11 +1,13 @@
 import ProjectCard from "@/components/root/ProjectCard";
 import { Plus } from "lucide-react";
+import { Project } from "@/types/project";
 
-interface Project {
+interface ProjectCard {
   _id: string;
   title: string;
   status: "Published" | "Draft";
 }
+
 const DataState = ({
   projects,
   onCreate,
