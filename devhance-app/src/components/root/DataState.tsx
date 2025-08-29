@@ -1,8 +1,8 @@
 import ProjectCard from "@/components/root/ProjectCard";
 import { Plus } from "lucide-react";
-import { Project } from "@/types/project";
+import { Project } from "@/types/projects";
 
-interface ProjectCard {
+interface ProjectCardDis {
   _id: string;
   title: string;
   status: "Published" | "Draft";
