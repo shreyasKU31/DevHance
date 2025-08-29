@@ -34,7 +34,7 @@ export default async function handler(
         case "GET":
           const projects = await ProjectStory.find({ authorId: user._id })
             .sort({ updatedAt: -1 })
-            .select("_id title status");
+            .select("_id title status slug");
           return res.status(200).json(projects);
 
         case "POST":

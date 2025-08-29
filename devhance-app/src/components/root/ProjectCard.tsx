@@ -1,5 +1,7 @@
+
 import { Edit, Share2, MoreVertical } from "lucide-react";
 import Link from "next/link";
+<<<<<<< HEAD
 import { Project } from "@/types/Projects";
 
 // --- TypeScript Interface for Project Data ---
@@ -29,6 +31,20 @@ const ProjectCard = ({ project }: ProjectCard) => (
         <MoreVertical size={18} />
       </button>
     </div>
+=======
+import { Project } from "@/types/project";
+
+const ProjectCard = ({ project }: { project: Project }) => (
+  <div className="project-card glass-pro group p-4 border rounded mb-4">
+    <h3 className="font-bold text-lg mb-2 text-white">{project.title || "Untitled Project"}</h3>
+    <p className="text-gray-300 mb-4">{project.problem}</p>
+    <Link
+      href={`/projects/${project.slug}`}
+      className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+    >
+      Know More
+    </Link>
+>>>>>>> 509e1e657b67e7dd2c2fbcb323be8e0730a519f2
   </div>
 );
 
